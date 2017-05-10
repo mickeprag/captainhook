@@ -37,6 +37,7 @@ def run(files, temp_folder, arg=None):
     score = float(re.search("(\d.\d\d)/10", output).group(1))
     if score >= float(arg):
         return False
-    return ("Pylint appreciated your {0} as {1},"
-        "required threshold is {2}".format(PYLINT_TARGET, score, arg)
+    splitReport = output.split('\n\n')
+    return ("{0}\n\nPylint appreciated your {1} as {2},"
+        "required threshold is {3}".format(splitReport[0], PYLINT_TARGET, score, arg)
         )
